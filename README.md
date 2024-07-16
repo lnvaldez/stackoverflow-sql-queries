@@ -53,7 +53,7 @@ Retrieves the DisplayName of users who have made more than 100 comments in total
 
 Updates the Location column of users to 'Desconocido' (Unknown in Spanish) where Location is null or empty.
 <br>
-<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/data/csv/data5.csv) / [rpt](/rpt/report5.rpt)</strong>
+<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/data/csv/data5.csv) / [rpt](data/rpt/report5.rpt)</strong>
 
 ### Query 6 - [query06](query/query06.sql)
 
@@ -65,7 +65,7 @@ Deletes comments made by users whose Reputation is less than 100, displaying the
 
 Retrieves DisplayName of users along with the total count of their posts (TotalPosts), comments (TotalComments), and badges (TotalBadges).
 <br>
-<strong>[csv](data/csv/data7.csv)</strong>
+<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql-queries/main/data/csv/data7.csv)</strong>
 
 ### Query 8 - [query08](query/query08.sql)
 
