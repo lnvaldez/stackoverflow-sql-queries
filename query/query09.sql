@@ -1,4 +1,3 @@
-
 -- * 09
 SELECT TOP 5 
     Text, 
