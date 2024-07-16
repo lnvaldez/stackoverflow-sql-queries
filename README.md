@@ -29,7 +29,7 @@ The Stack Overflow database includes tables such as Users, Posts, Comments, and 
 
 Retrieves the DisplayName, Location, and Reputation of users from the Users table, ordered by Reputation in descending order.
 <br>
-<strong>[csv](/csv/data1.csv)</strong>
+<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/csv/data1.csv)</strong>
 
 ### Query 2 - [query02](query/query02.sql)
 
