@@ -29,52 +29,52 @@ The Stack Overflow database includes tables such as Users, Posts, Comments, and 
 
 Retrieves the DisplayName, Location, and Reputation of users from the Users table, ordered by Reputation in descending order.
 <br>
-<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/csv/data1.csv)</strong>
+<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/data/csv/data1.csv)</strong>
 
 ### Query 2 - [query02](query/query02.sql)
 
 Retrieves the Title of posts and the DisplayName of users who authored those posts, filtering out posts where Title is not null.
 <br>
-<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/csv/data2.csv)</strong>
+<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/data/csv/data2.csv)</strong>
 
 ### Query 3 - [query03](query/query03.sql)
 
 Calculates the average Score of posts authored by each user (DisplayName), sorting users by their average score in descending order.
 <br>
-<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/csv/data3.csv)</strong>
+<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/data/csv/data3.csv)</strong>
 
 ### Query 4 - [query04](query/query04.sql)
 
 Retrieves the DisplayName of users who have made more than 100 comments in total.
 <br>
-<strong>[csv](/csv/data4.csv)</strong>
+<strong>[csv](data/csv/data4.csv)</strong>
 
 ### Query 5 - [query05](query/query05.sql)
 
 Updates the Location column of users to 'Desconocido' (Unknown in Spanish) where Location is null or empty.
 <br>
-<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/csv/data5.csv) / [rpt](/rpt/report5.rpt)</strong>
+<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/data/csv/data5.csv) / [rpt](/rpt/report5.rpt)</strong>
 
 ### Query 6 - [query06](query/query06.sql)
 
 Deletes comments made by users whose Reputation is less than 100, displaying the number of deleted comments after execution.
 <br>
-<strong>[rpt](/rpt/report6.rpt)</strong>
+<strong>[rpt](data/rpt/report6.rpt)</strong>
 
 ### Query 7 - [query07](query/query07.sql)
 
 Retrieves DisplayName of users along with the total count of their posts (TotalPosts), comments (TotalComments), and badges (TotalBadges).
 <br>
-<strong>[csv](/csv/data7.csv)</strong>
+<strong>[csv](data/csv/data7.csv)</strong>
 
 ### Query 8 - [query08](query/query08.sql)
 
 Retrieves the top 10 posts by Title and Score from the Posts table, ordered by Score in descending order.
 <br>
-<strong>[csv](/csv/data8.csv)</strong>
+<strong>[csv](data/csv/data8.csv)</strong>
 
 ### Query 9 - [query09](query/query09.sql)
 
 Retrieves the most recent 5 comments with their Text and CreationDate from the Comments table, ordered by CreationDate in descending order.
 <br>
-<strong>[csv](/csv/data9.csv)</strong>
+<strong>[csv](data/csv/data9.csv)</strong>
