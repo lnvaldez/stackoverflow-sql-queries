@@ -1,121 +1,128 @@
-/*
-SELECT TOP (200) [Id]
-      ,[DisplayName]
-      ,[Location]
-      ,[Reputation]
-  FROM [StackOverflow2010].[dbo].[Users]
-  ORDER BY Reputation DESC
-*/
-
-/*
-SELECT p.Title, u.DisplayName
-FROM Posts p
-INNER JOIN Users u ON p.OwnerUserId = u.Id 
-WHERE p.OwnerUserId IS NOT NULL
-*/
-
-/*
-SELECT u.DisplayName, AVG(p.Score) AS AverageScore
-FROM Users u
-INNER JOIN Posts p on u.ID = p.OwnerUserId
-GROUP BY u.ID, u.DisplayName 
-ORDER BY AverageScore DESC
-*/
-
-/*
-SELECT DisplayName
-FROM Users
-WHERE Id IN (
-    SELECT UserId
-    FROM Comments
-    GROUP BY UserId
-    HAVING COUNT(*) > 100
-)
-*/
-
-/*
--- View Current state
-SELECT COUNT(*) AS EmptyLocations
-FROM Users
-WHERE Location IS NULL OR Location = ''
-
-SELECT TOP 10 Id, DisplayName, Location
-FROM Users
-WHERE Location IS NULL OR Location = ''
-
--- Update
-UPDATE Users
-SET Location = 'Unknown'
-WHERE Location IS NULL OR Location = ''
-
-SELECT 'Update completed successfully. Empty locations have been changed to "Unknown".' AS Message
-
--- View state after update
-SELECT COUNT(*) AS UnknownLocations
-FROM Users
-WHERE Location = 'Unknown'
-
-SELECT TOP 10 Id, DisplayName, Location
-FROM Users
-WHERE Location = 'Unknown'
-*/
-
-/*
--- Count comments before deletion
-SELECT COUNT(*) AS CommentsBeforeDeletion
-FROM Comments
-WHERE UserId IN (
-    SELECT Id
-    FROM Users
-    WHERE Reputation < 100
-)
-
--- Delete
-DELETE FROM Comments
-WHERE UserId IN (
-    SELECT Id
-    FROM Users
-    WHERE Reputation < 100
-)
-
-PRINT 'Comments from users with less than 100 reputation have been deleted successfully.'
-
--- Count comments after deletion
-SELECT COUNT(*) AS CommentsAfterDeletion
-FROM Comments
-WHERE UserId IN (
-    SELECT Id
-    FROM Users
-    WHERE Reputation < 100
-)
-*/
-
-/* !
-SELECT TOP (200)
-    u.Id,
+-- * 01
+SELECT 
     u.DisplayName,
-    COUNT(DISTINCT p.Id) AS TotalPosts,
-    COUNT(DISTINCT c.Id) AS TotalComments,
-    COUNT(DISTINCT b.Id) AS TotalBadges
+    u.Location,
+    u.Reputation
+FROM 
+    Users AS u
+ORDER BY 
+    Reputation DESC;
+
+-- * 02
+SELECT
+    p.Title,
+    u.DisplayName
+FROM 
+    Posts AS p
+INNER JOIN 
+    Users AS u ON p.OwnerUserId = u.Id
+WHERE
+    p.Title IS NOT NULL;
+
+-- * 03
+SELECT 
+    u.DisplayName,
+    AVG(p.Score) AS AverageScore
 FROM 
     Users u
-LEFT JOIN Posts p ON u.Id = p.OwnerUserId
-LEFT JOIN Comments c ON u.Id = c.UserId
-LEFT JOIN Badges b ON u.Id = b.UserId
+INNER JOIN 
+    Posts p ON u.ID = p.OwnerUserId 
 GROUP BY 
-    u.Id, u.DisplayName
+    u.ID,
+    u.DisplayName 
 ORDER BY 
+    AverageScore DESC;
+
+-- * 04
+SELECT 
     u.DisplayName
-*/
+FROM
+    Users AS u
+WHERE
+    Id IN (
+        SELECT
+            c.UserId
+        FROM
+            Comments AS c
+        GROUP BY 
+            c.UserId
+        HAVING 
+            COUNT(*) > 100
+    );
 
-/*
-SELECT TOP 10 Title, Score
-FROM Posts
-ORDER BY Score DESC
-*/
+-- * 05
+UPDATE 
+    Users
+SET 
+    Location = 'Desconocido'
+WHERE 
+    Location IS NULL OR Location = '';
 
-/*
-SELECT TOP 5 Text, CreationDate
-FROM Comments
-ORDER BY CreationDate DESC
-*/
+PRINT 
+    'Actualizacion completada. Ubicaciones vacias cambiadas a "Desconocido".';
+
+-- After
+SELECT 
+    u.DisplayName, 
+    u.Location 
+FROM 
+    Users AS u
+WHERE 
+    u.Location = 'Desconocido';
+
+-- * 06
+DECLARE @RowsAffected INT;
+
+DELETE FROM Comments 
+WHERE
+    UserId IN (
+        SELECT Id 
+        FROM Users 
+        WHERE Reputation < 100
+    );
+
+SET @RowsAffected = @@ROWCOUNT;
+
+PRINT 
+	'Comments from ' + CAST(@RowsAffected AS VARCHAR(10)) + ' users with less than 100 reputation have been deleted.';
+
+-- * 07
+SELECT 
+    u.DisplayName,
+    COALESCE(p.TotalPosts, 0) AS TotalPosts,
+    COALESCE(c.TotalComments, 0) AS TotalComments,
+    COALESCE(b.TotalBadges, 0) AS TotalBadges
+FROM 
+    Users u
+LEFT JOIN 
+    (SELECT OwnerUserId, COUNT(DISTINCT Id) AS TotalPosts
+     FROM Posts
+     GROUP BY OwnerUserId) p ON u.Id = p.OwnerUserId
+LEFT JOIN 
+    (SELECT UserId, COUNT(DISTINCT Id) AS TotalComments
+     FROM Comments
+     GROUP BY UserId) c ON u.Id = c.UserId
+LEFT JOIN 
+    (SELECT UserId, COUNT(DISTINCT Id) AS TotalBadges
+     FROM Badges
+     GROUP BY UserId) b ON u.Id = b.UserId
+ORDER BY 
+    u.DisplayName;
+
+-- * 08
+SELECT TOP 10 
+    Title, 
+    Score
+FROM 
+    Posts
+ORDER BY 
+    Score DESC;
+
+-- * 09
+SELECT TOP 5 
+    Text, 
+    CreationDate
+FROM 
+    Comments
+ORDER BY 
+    CreationDate DESC;
