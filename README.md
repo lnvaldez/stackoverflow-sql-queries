@@ -1,4 +1,4 @@
-# Stack Overflow 10GB Database Queries
+# Stack Overflow 10GB Database Queries <br> ![Stack Overflow](https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white)![MicrosoftSQLServer](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)
 
 This repository contains SQL queries and resources for working with the Stack Overflow 10GB database provided by Brent Ozar.
 
