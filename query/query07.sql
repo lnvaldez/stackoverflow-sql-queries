@@ -1,3 +1,11 @@
+/*
+★ Para cada usuario, muestra el número total de publicaciones (Posts), comentarios
+(Comments) y medallas (Badges) que han realizado. Utiliza uniones (JOIN) para combinar
+la información de las tablas Posts, Comments y Badges por usuario. Presenta los
+resultados en una tabla mostrando el DisplayName del usuario junto con el total de
+publicaciones, comentarios y medallas.
+*/
+
 -- * 07
 SELECT 
     u.DisplayName,
