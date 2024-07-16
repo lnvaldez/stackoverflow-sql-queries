@@ -35,13 +35,13 @@ Retrieves the DisplayName, Location, and Reputation of users from the Users tabl
 
 Retrieves the Title of posts and the DisplayName of users who authored those posts, filtering out posts where Title is not null.
 <br>
-<strong>[csv](/csv/data2.csv)</strong>
+<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/csv/data2.csv)</strong>
 
 ### Query 3 - [query03](query/query03.sql)
 
 Calculates the average Score of posts authored by each user (DisplayName), sorting users by their average score in descending order.
 <br>
-<strong>[csv](/csv/data3.csv)</strong>
+<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/csv/data3.csv)</strong>
 
 ### Query 4 - [query04](query/query04.sql)
 
@@ -53,7 +53,7 @@ Retrieves the DisplayName of users who have made more than 100 comments in total
 
 Updates the Location column of users to 'Desconocido' (Unknown in Spanish) where Location is null or empty.
 <br>
-<strong>[csv](/csv/data5.csv) / [rpt](/rpt/report5.rpt)</strong>
+<strong>[csv](https://raw.githubusercontent.com/lnvaldez/stackoverflow-sql/main/csv/data5.csv) / [rpt](/rpt/report5.rpt)</strong>
 
 ### Query 6 - [query06](query/query06.sql)
 
